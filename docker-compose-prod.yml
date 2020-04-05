@@ -5,13 +5,11 @@ services:
     build: .
     command: python /code/manage.py runserver 0.0.0.0:8000
     environment:
-      - ENVIRONMENT=development
+      - ENVIRONMENT=production
       - SECRET_KEY=4*i=#1o*^)in_75f6duhhvho(z$$63@cp6*ji97)sfyf@c#=^(k
-      - DEBUG=1
+      - DEBUG=0
       - STRIPE_TEST_PUBLISHABLE_KEY=pk_test_sVkPx2aW1EPPt3R8VQq1ICLS00XONybadY
       - STRIPE_TEST_SECRET_KEY=sk_test_GsJhGeBQ0KpqO3QEEszK7wdM00wvpd4ZK6
-    volumes:
-      - .:/code
     ports:
       - 8000:8000
     depends_on:
@@ -25,8 +23,3 @@ services:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
-
-volumes:
-  postgres_data:
